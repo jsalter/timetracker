@@ -70,7 +70,7 @@ export class ApiService {
   getIssuesByAgile = (agileName) => {
     return new Promise(resolve => {
       this.UseAccount().then(() => {
-        this.http.get('/rest/issue?filter=for:me+Board+' + agileName + ':+{Current+sprint}+#Unresolved&max=50')
+        this.http.get('/rest/issue?filter=for:me+Board+' + agileName + ':+{Current+sprint}+-Resolved&max=50')
           .map(res => res.json())
           .subscribe(data => {
             resolve(data)
